@@ -31,7 +31,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/sendgridwebhooks.php' => config_path('sendgridwebhooks.php')
         ]);
+
+        $this->publishes([
+            __DIR__ . '/../database/migrations/' => database_path('migrations')
+        ], 'sendgrid-webhooks-migrations');
+
         $this->loadRoutesFrom(__DIR__ . '/../routes/sendgridwebhooks.php');
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        // $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 }
